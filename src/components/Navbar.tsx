@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag, User, Menu, X, Sparkles, Leaf } from "lucide-react";
+import { ShoppingBag, User, Menu, X, Sparkles, Leaf, Heart, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -21,12 +21,14 @@ const Navbar = ({ cartCount = 0 }: NavbarProps) => {
   const location = useLocation();
 
   const navLinks = [
-    { href: "/", label: "Découvrir" },
-    { href: "/style-assistant", label: "Assistant IA", icon: Sparkles },
+    { href: "/", label: "Accueil" },
+    { href: "/catalog", label: "Catalogue" },
+    { href: "/style-assistant", label: "Assistant Style", icon: Sparkles },
+    { href: "/favorites", label: "Favoris", icon: Heart },
   ];
 
   return (
-    <header className="sticky top-0 z-50 glass-effect border-b border-border/50">
+    <header className="sticky top-0 z-50 glass-effect border-b border-border/50 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -38,9 +40,14 @@ const Navbar = ({ cartCount = 0 }: NavbarProps) => {
               <Leaf className="h-8 w-8 text-primary transition-transform group-hover:scale-110" />
               <div className="absolute -top-1 -right-1 h-3 w-3 bg-secondary rounded-full animate-pulse" />
             </div>
-            <span className="font-display text-xl font-semibold text-foreground">
-              ReStyle
-            </span>
+            <div>
+              <span className="font-display text-xl font-semibold text-foreground">
+                ReStyle
+              </span>
+              <span className="hidden md:block text-xs text-muted-foreground">
+                Mode circulaire
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -52,7 +59,7 @@ const Navbar = ({ cartCount = 0 }: NavbarProps) => {
                 className={cn(
                   "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300",
                   location.pathname === link.href
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-primary text-primary-foreground shadow-sm"
                     : "text-foreground/70 hover:text-foreground hover:bg-accent"
                 )}
               >
@@ -66,12 +73,22 @@ const Navbar = ({ cartCount = 0 }: NavbarProps) => {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
+            {/* Notifications */}
+            <Button variant="ghost" size="icon" className="relative hidden sm:flex">
+              <Bell className="h-5 w-5" />
+              <Badge 
+                className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center p-0 bg-secondary text-secondary-foreground text-[10px]"
+              >
+                3
+              </Badge>
+            </Button>
+
             {/* Cart */}
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingBag className="h-5 w-5" />
               {cartCount > 0 && (
                 <Badge 
-                  className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-secondary text-secondary-foreground text-xs"
+                  className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-primary text-primary-foreground text-xs font-semibold"
                 >
                   {cartCount}
                 </Badge>
@@ -85,17 +102,26 @@ const Navbar = ({ cartCount = 0 }: NavbarProps) => {
                   <User className="h-5 w-5" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuContent align="end" className="w-56">
+                <div className="px-2 py-2">
+                  <p className="text-sm font-medium">Jules Ruberti</p>
+                  <p className="text-xs text-muted-foreground">jules@restyle.com</p>
+                </div>
+                <DropdownMenuSeparator />
                 <DropdownMenuItem>Mon Profil</DropdownMenuItem>
                 <DropdownMenuItem>Mes Commandes</DropdownMenuItem>
                 <DropdownMenuItem>Ma Garde-robe</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-primary" />
-                  <span>Style Points: 1,250</span>
+                <DropdownMenuItem className="flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-primary" />
+                    <span>Style Points</span>
+                  </span>
+                  <Badge variant="secondary">1,250</Badge>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Déconnexion</DropdownMenuItem>
+                <DropdownMenuItem>Paramètres</DropdownMenuItem>
+                <DropdownMenuItem className="text-destructive">Déconnexion</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 

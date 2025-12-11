@@ -51,19 +51,16 @@ const BoxCard = ({ box, onAddToCart, onViewDetails }: BoxCardProps) => {
         </div>
 
         {/* Badges */}
-        <div className="absolute top-4 left-4 flex flex-col gap-2">
+        <div className="absolute top-4 left-4">
           <Badge className="bg-secondary text-secondary-foreground">
             -{savings}%
-          </Badge>
-          <Badge variant="outline" className="bg-card/80 backdrop-blur-sm">
-            {box.items} articles
           </Badge>
         </div>
 
         {/* Quick Actions */}
         <div
           className={cn(
-            "absolute top-4 right-4 flex flex-col gap-2 transition-all duration-300",
+            "absolute top-4 right-4 transition-all duration-300",
             isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
           )}
         >
@@ -76,81 +73,38 @@ const BoxCard = ({ box, onAddToCart, onViewDetails }: BoxCardProps) => {
             <Eye className="h-4 w-4" />
           </Button>
         </div>
-
-        {/* Eco Badge */}
-        <div className="absolute bottom-4 right-4">
-          <div className="flex items-center gap-1.5 px-2 py-1 bg-primary/90 backdrop-blur-sm rounded-full text-primary-foreground text-xs">
-            <Leaf className="h-3 w-3" />
-            <span>{box.sustainability.co2Saved} CO₂</span>
-          </div>
-        </div>
       </div>
 
       {/* Content */}
-      <div className="p-5 space-y-4">
-        {/* Category */}
-        <Badge variant="secondary" className="text-xs">
-          {box.category}
-        </Badge>
-
-        {/* Title & Description */}
+      <div className="p-4 space-y-3">
+        {/* Title */}
         <div>
           <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
             {box.name}
           </h3>
-          <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
-            {box.description}
-          </p>
+          <Badge variant="secondary" className="text-xs mt-2">
+            {box.category}
+          </Badge>
         </div>
 
-        {/* Rating */}
-        <div className="flex items-center gap-2">
+        {/* Price & Rating */}
+        <div className="flex items-center justify-between">
+          <span className="text-2xl font-bold text-foreground">{box.price}€</span>
           <div className="flex items-center gap-1">
             <Star className="h-4 w-4 fill-secondary text-secondary" />
             <span className="text-sm font-medium">{box.rating}</span>
           </div>
-          <span className="text-sm text-muted-foreground">
-            ({box.reviews} avis)
-          </span>
         </div>
 
-        {/* Price */}
-        <div className="flex items-end gap-2">
-          <span className="text-2xl font-bold text-foreground">{box.price}€</span>
-          <span className="text-sm text-muted-foreground line-through mb-1">
-            {box.originalValue}€
-          </span>
-        </div>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5">
-          {box.tags.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-0.5 bg-accent text-accent-foreground text-xs rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Actions */}
-        <div className="flex gap-2 pt-2">
-          <Button
-            variant="secondary"
-            className="flex-1"
-            onClick={() => onAddToCart?.(box)}
-          >
-            <ShoppingBag className="h-4 w-4 mr-2" />
-            Ajouter
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => onViewDetails?.(box)}
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
+        {/* Action Button */}
+        <Button
+          variant="secondary"
+          className="w-full"
+          onClick={() => onAddToCart?.(box)}
+        >
+          <ShoppingBag className="h-4 w-4 mr-2" />
+          Ajouter au panier
+        </Button>
       </div>
     </div>
   );

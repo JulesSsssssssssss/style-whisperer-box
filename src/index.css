@@ -1,50 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
 @layer base {
   :root {
-    --background: 40 33% 95%;
+    --background: 0 0% 95%;
     --foreground: 240 17% 30%;
 
-    --card: 40 33% 98%;
+    --card: 0 0% 98%;
     --card-foreground: 240 17% 30%;
 
-    --popover: 40 33% 98%;
+    --popover: 0 0% 98%;
     --popover-foreground: 240 17% 30%;
 
     --primary: 100 25% 54%;
-    --primary-foreground: 40 33% 98%;
+    --primary-foreground: 0 0% 98%;
 
     --secondary: 14 65% 62%;
-    --secondary-foreground: 40 33% 98%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 40 20% 90%;
+    --muted: 0 0% 90%;
     --muted-foreground: 240 10% 50%;
 
     --accent: 100 20% 85%;
     --accent-foreground: 100 25% 35%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 40 33% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 40 20% 85%;
-    --input: 40 20% 88%;
+    --border: 0 0% 85%;
+    --input: 0 0% 88%;
     --ring: 100 25% 54%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --cream: 40 33% 95%;
+    --cream: 0 0% 95%;
     --sage: 100 25% 54%;
     --sage-light: 100 20% 85%;
     --sage-dark: 100 25% 40%;
     --terracotta: 14 65% 62%;
     --terracotta-light: 14 65% 75%;
     --charcoal: 240 17% 30%;
-    --warm-white: 40 33% 98%;
+    --warm-white: 0 0% 95%;
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(100 25% 54% / 0.1), hsl(14 65% 62% / 0.1));
