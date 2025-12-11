@@ -340,6 +340,24 @@ const StyleAssistant = () => {
                       {activeTab === "boxes" ? <ShoppingBag className="h-8 w-8 text-primary" /> : <Wand2 className="h-8 w-8 text-primary" />}
                     </div>
                     <h4 className="font-semibold mb-2">{activeTab === "boxes" ? "Vos recommandations apparaîtront ici" : "Vos suggestions apparaîtront ici"}</h4>
+                    {activeTab === "boxes" && (
+                      <>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          Ou essayez l'analyse IA de votre style !
+                        </p>
+                        <Button 
+                          onClick={() => {
+                            setSelectedBoxForTryOn(null);
+                            setShowVirtualTryOn(true);
+                          }}
+                          variant="outline"
+                          className="gap-2"
+                        >
+                          <Camera className="h-4 w-4" />
+                          Analyser mon style avec IA
+                        </Button>
+                      </>
+                    )}
                   </div>
                 )}
               </ScrollArea>

@@ -75,17 +75,17 @@ L'assistant style IA permet maintenant aux utilisateurs de visualiser comment le
 5. **Visualisez le résultat** : L'IA appliquera virtuellement les vêtements de la box sur votre photo
 6. **Procédez au paiement** : Si vous êtes satisfait du résultat, cliquez sur "Procéder au paiement"
 
-### Configuration de l'API Banana
+### Configuration de l'API Gemini (Nano Banana)
 
-Pour utiliser l'essayage virtuel en production, vous devez configurer l'API Banana :
+Pour utiliser l'essayage virtuel en production, vous devez configurer l'API Gemini avec Nano Banana :
 
-1. Créez un compte sur [banana.dev](https://banana.dev/)
-2. Obtenez votre clé API et votre clé de modèle
-3. Créez un fichier `.env` à la racine du projet (utilisez `.env.example` comme modèle)
-4. Ajoutez vos clés :
+1. Allez sur [Google AI Studio](https://aistudio.google.com/)
+2. Connectez-vous avec votre compte Google
+3. Cliquez sur "Get API Key" puis "Create API Key"
+4. Créez un fichier `.env` à la racine du projet (utilisez `.env.example` comme modèle)
+5. Ajoutez votre clé :
    ```
-   VITE_BANANA_API_KEY=votre_cle_api
-   VITE_BANANA_MODEL_KEY=votre_cle_modele
+   VITE_GEMINI_API_KEY=votre_cle_api_gemini
    ```
 
 **Note** : En développement, un mode démo est activé qui retourne l'image originale sans transformation réelle.
@@ -93,7 +93,7 @@ Pour utiliser l'essayage virtuel en production, vous devez configurer l'API Bana
 ### Architecture technique
 
 - **Composant** : `src/components/VirtualTryOn.tsx` - Interface utilisateur pour l'essayage virtuel
-- **Service** : `src/services/bananaApi.ts` - Intégration avec l'API Banana
+- **Service** : `src/services/bananaApi.ts` - Intégration avec Gemini Flash + Nano Banana
 - **Page** : `src/pages/StyleAssistant.tsx` - Page principale avec boutons d'essayage
 
 ### Dépendances
