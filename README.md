@@ -60,6 +60,46 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Fonctionnalité d'Essayage Virtuel
+
+### Description
+
+L'assistant style IA permet maintenant aux utilisateurs de visualiser comment les vêtements d'une box leur iraient grâce à l'essayage virtuel alimenté par l'API Banana.
+
+### Comment l'utiliser
+
+1. **Accédez à l'Assistant Style** : Naviguez vers la page "Assistant Style"
+2. **Choisissez une box** : Discutez avec l'IA pour obtenir des recommandations de box
+3. **Cliquez sur "Essayer"** : Sur une box recommandée, cliquez sur le bouton "Essayer"
+4. **Téléchargez votre photo** : Chargez une photo de vous en pied (format JPG ou PNG, max 5MB)
+5. **Visualisez le résultat** : L'IA appliquera virtuellement les vêtements de la box sur votre photo
+6. **Procédez au paiement** : Si vous êtes satisfait du résultat, cliquez sur "Procéder au paiement"
+
+### Configuration de l'API Banana
+
+Pour utiliser l'essayage virtuel en production, vous devez configurer l'API Banana :
+
+1. Créez un compte sur [banana.dev](https://banana.dev/)
+2. Obtenez votre clé API et votre clé de modèle
+3. Créez un fichier `.env` à la racine du projet (utilisez `.env.example` comme modèle)
+4. Ajoutez vos clés :
+   ```
+   VITE_BANANA_API_KEY=votre_cle_api
+   VITE_BANANA_MODEL_KEY=votre_cle_modele
+   ```
+
+**Note** : En développement, un mode démo est activé qui retourne l'image originale sans transformation réelle.
+
+### Architecture technique
+
+- **Composant** : `src/components/VirtualTryOn.tsx` - Interface utilisateur pour l'essayage virtuel
+- **Service** : `src/services/bananaApi.ts` - Intégration avec l'API Banana
+- **Page** : `src/pages/StyleAssistant.tsx` - Page principale avec boutons d'essayage
+
+### Dépendances
+
+- `axios` : Pour les appels API vers Banana
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/7b039afc-a50b-4beb-8367-8c55462eac3e) and click on Share -> Publish.

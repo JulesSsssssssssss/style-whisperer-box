@@ -10,6 +10,7 @@ import {
   Leaf,
   Target,
   Plus,
+  Camera,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
@@ -17,8 +18,9 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { clothingBoxes } from "@/data/boxes";
+import { clothingBoxes, type ClothingBox } from "@/data/boxes";
 import { cn } from "@/lib/utils";
+import VirtualTryOn from "@/components/VirtualTryOn";
 
 interface Message {
   id: string;
@@ -50,6 +52,8 @@ const StyleAssistant = () => {
   const [recommendations, setRecommendations] = useState<typeof clothingBoxes>([]);
   const [outfitSuggestion, setOutfitSuggestion] = useState<Message["outfitSuggestion"] | null>(null);
   const [stylePoints, setStylePoints] = useState(100);
+  const [showVirtualTryOn, setShowVirtualTryOn] = useState(false);
+  const [selectedBoxForTryOn, setSelectedBoxForTryOn] = useState<ClothingBox | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -120,13 +124,13 @@ const StyleAssistant = () => {
       let response = "";
       let recs: typeof clothingBoxes = [];
       if (lowerMessage.includes("entretien") || lowerMessage.includes("professionnel")) {
-        response = "Pour un entretien, je vous recommande la box 'Classic Pro' 👔 Elle contient des pièces élégantes et professionnelles parfaites pour faire bonne impression!";
+        response = "Pour un entretien, je vous recommande la box 'Classic Pro' 👔 Elle contient des pièces élégantes et professionnelles parfaites pour faire bonne impression! Vous pouvez aussi essayer virtuellement ces vêtements sur vous.";
         recs = clothingBoxes.filter((b) => b.category === "Classic").slice(0, 3);
       } else if (lowerMessage.includes("soirée") || lowerMessage.includes("sortie")) {
-        response = "Pour une soirée, voici des box parfaites pour briller! ✨";
+        response = "Pour une soirée, voici des box parfaites pour briller! ✨ N'hésitez pas à les essayer virtuellement.";
         recs = clothingBoxes.filter((b) => ["Evening", "Boho"].includes(b.category)).slice(0, 3);
       } else {
-        response = "Voici une sélection de box qui pourraient vous plaire! 😊";
+        response = "Voici une sélection de box qui pourraient vous plaire! 😊 Vous pouvez visualiser comment elles vous iraient avec l'essayage virtuel.";
         recs = clothingBoxes.slice(0, 3);
       }
       await simulateTyping(response, recs);
@@ -158,6 +162,22 @@ const StyleAssistant = () => {
       await simulateTyping(response, undefined, outfit);
     }
     setIsLoading(false);
+  };
+
+  const handleTryOnBox = (box: ClothingBox) => {
+    setSelectedBoxForTryOn(box);
+    setShowVirtualTryOn(true);
+  };
+
+  const handleCloseVirtualTryOn = () => {
+    setShowVirtualTryOn(false);
+    setSelectedBoxForTryOn(null);
+  };
+
+  const handleProceedToCheckout = () => {
+    // TODO: Implémenter la redirection vers le paiement
+    alert(`Redirection vers le paiement pour: ${selectedBoxForTryOn?.name}`);
+    handleCloseVirtualTryOn();
   };
 
   return (
@@ -255,10 +275,21 @@ const StyleAssistant = () => {
                             <h4 className="font-semibold text-foreground">{box.name}</h4>
                             <Badge variant="secondary" className="text-xs mt-1">{box.category}</Badge>
                             <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{box.description}</p>
-                            <Button size="sm" variant="secondary" className="w-full mt-3">
-                              <ShoppingBag className="h-3 w-3 mr-1" />
-                              Ajouter
-                            </Button>
+                            <div className="flex gap-2 mt-3">
+                              <Button 
+                                size="sm" 
+                                variant="outline" 
+                                className="flex-1"
+                                onClick={() => handleTryOnBox(box)}
+                              >
+                                <Camera className="h-3 w-3 mr-1" />
+                                Essayer
+                              </Button>
+                              <Button size="sm" variant="secondary" className="flex-1">
+                                <ShoppingBag className="h-3 w-3 mr-1" />
+                                Ajouter
+                              </Button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -315,6 +346,14 @@ const StyleAssistant = () => {
             </div>
           </div>
         </main>
+        
+        {showVirtualTryOn && (
+          <VirtualTryOn
+            selectedBox={selectedBoxForTryOn}
+            onClose={handleCloseVirtualTryOn}
+            onProceedToCheckout={handleProceedToCheckout}
+          />
+        )}
       </div>
     </>
   );
