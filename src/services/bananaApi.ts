@@ -7,6 +7,10 @@ import axios from 'axios';
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
 
+// Protection contre les appels multiples
+let lastCallTime = 0;
+const MIN_CALL_INTERVAL = 2000; // 2 secondes minimum entre chaque appel
+
 interface VirtualTryOnRequest {
   userImage: string; // Base64 encoded image
   garmentImages: string[]; // Array of garment image URLs
@@ -30,6 +34,20 @@ export const analyzeUserStyle = async (imageBase64: string): Promise<{
   error?: string;
 }> => {
   try {
+    // Protection anti-spam : vérifier le temps depuis le dernier appel
+    const now = Date.now();
+    const timeSinceLastCall = now - lastCallTime;
+    
+    if (timeSinceLastCall < MIN_CALL_INTERVAL) {
+      console.warn(`⚠️ Appel trop rapide. Attendez ${Math.ceil((MIN_CALL_INTERVAL - timeSinceLastCall) / 1000)}s`);
+      return {
+        success: false,
+        error: `Veuillez patienter ${Math.ceil((MIN_CALL_INTERVAL - timeSinceLastCall) / 1000)} secondes avant de réessayer`
+      };
+    }
+    
+    lastCallTime = now;
+    
     if (!GEMINI_API_KEY) {
       console.warn('⚠️ API Gemini non configurée');
       return {

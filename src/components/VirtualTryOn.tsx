@@ -22,6 +22,7 @@ export const VirtualTryOn = ({ selectedBox, onClose, onProceedToCheckout }: Virt
   const [error, setError] = useState<string | null>(null);
   const [styleAnalysis, setStyleAnalysis] = useState<string | null>(null);
   const [recommendedBoxes, setRecommendedBoxes] = useState<ClothingBox[]>([]);
+  const [hasAnalyzed, setHasAnalyzed] = useState(false); // Empêcher les appels multiples
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -39,8 +40,10 @@ export const VirtualTryOn = ({ selectedBox, onClose, onProceedToCheckout }: Virt
         setError(null);
         
         // Si aucune box n'est sélectionnée, analyser le style automatiquement
-        if (!selectedBox) {
+        // MAIS seulement si on n'a pas déjà analysé cette photo
+        if (!selectedBox && !hasAnalyzed && !isAnalyzing) {
           setIsAnalyzing(true);
+          setHasAnalyzed(true); // Marquer comme analysé pour éviter les doublons
           setError(null);
           try {
             const analysis = await analyzeUserStyle(base64Image);
@@ -127,6 +130,7 @@ export const VirtualTryOn = ({ selectedBox, onClose, onProceedToCheckout }: Virt
     setError(null);
     setStyleAnalysis(null);
     setRecommendedBoxes([]);
+    setHasAnalyzed(false); // Réinitialiser pour permettre une nouvelle analyse
   };
 
   if (!selectedBox && recommendedBoxes.length === 0 && !isAnalyzing && !userPhoto) {
