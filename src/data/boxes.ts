@@ -30,9 +30,7 @@ export const clothingBoxes: ClothingBox[] = [
     originalValue: 280,
     items: 5,
     images: [
-      "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600",
-      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600",
-      "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=600",
+      "/casual-essentials.png",
     ],
     tags: ["everyday", "comfortable", "basics", "neutral"],
     rating: 4.8,
@@ -54,7 +52,7 @@ export const clothingBoxes: ClothingBox[] = [
     originalValue: 400,
     items: 4,
     images: [
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
+      "/vintage-revival.png",
       "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600",
       "https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=600",
     ],
@@ -78,7 +76,7 @@ export const clothingBoxes: ClothingBox[] = [
     originalValue: 320,
     items: 5,
     images: [
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600",
+      "/box-urban-street.png",
       "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600",
       "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600",
     ],
@@ -102,7 +100,7 @@ export const clothingBoxes: ClothingBox[] = [
     originalValue: 520,
     items: 4,
     images: [
-      "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600",
+      "/classic-pro.png",
       "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600",
       "https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=600",
     ],
@@ -126,7 +124,7 @@ export const clothingBoxes: ClothingBox[] = [
     originalValue: 360,
     items: 5,
     images: [
-      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600",
+      "/bohemian-spirit.png",
       "https://images.unsplash.com/photo-1495385794356-15371f348c31?w=600",
       "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600",
     ],
@@ -150,7 +148,7 @@ export const clothingBoxes: ClothingBox[] = [
     originalValue: 450,
     items: 6,
     images: [
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600",
+      "/minimal-box.png",
       "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=600",
       "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600",
     ],
@@ -174,7 +172,7 @@ export const clothingBoxes: ClothingBox[] = [
     originalValue: 250,
     items: 5,
     images: [
-      "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600",
+      "/active-lifestyle.png",
       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600",
       "https://images.unsplash.com/photo-1483721310020-03333e577078?w=600",
     ],
@@ -198,7 +196,7 @@ export const clothingBoxes: ClothingBox[] = [
     originalValue: 600,
     items: 3,
     images: [
-      "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+      "/evening-edit.png",
       "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600",
       "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600",
     ],
