@@ -26,12 +26,10 @@ export const clothingBoxes: ClothingBox[] = [
     description: "Everyday comfort meets timeless style",
     longDescription:
       "Curated basics that form the foundation of any wardrobe. Soft tees, perfect-fit jeans, and versatile layering pieces selected for comfort and durability.",
-    price: 49.99,
+    price: 79.99,
     originalValue: 280,
     items: 5,
-    images: [
-      "/casual-essentials.png",
-    ],
+    images: ["/casual-essentials.png"],
     tags: ["everyday", "comfortable", "basics", "neutral"],
     rating: 4.8,
     reviews: 234,
@@ -48,7 +46,7 @@ export const clothingBoxes: ClothingBox[] = [
     description: "Unique finds from the 70s, 80s & 90s",
     longDescription:
       "Hand-picked vintage pieces with authentic character. From retro band tees to classic denim jackets, each item tells a story and adds personality to your look.",
-    price: 69.99,
+    price: 119.99,
     originalValue: 400,
     items: 4,
     images: [
@@ -72,7 +70,7 @@ export const clothingBoxes: ClothingBox[] = [
     description: "Street-smart style for city life",
     longDescription:
       "Contemporary streetwear meets sustainability. Graphic hoodies, cargo pants, and sneaker-ready pieces that keep you looking fresh from day to night.",
-    price: 59.99,
+    price: 99.99,
     originalValue: 320,
     items: 5,
     images: [
@@ -96,7 +94,7 @@ export const clothingBoxes: ClothingBox[] = [
     description: "Elevated essentials for the modern professional",
     longDescription:
       "Sophisticated pre-loved pieces for the workplace. Blazers, tailored trousers, and quality blouses that command respect while respecting the planet.",
-    price: 65.99,
+    price: 109.99,
     originalValue: 520,
     items: 4,
     images: [
@@ -120,7 +118,7 @@ export const clothingBoxes: ClothingBox[] = [
     description: "Free-spirited pieces for the creative soul",
     longDescription:
       "Flowing fabrics, earthy tones, and artisanal details. Perfect for those who express themselves through layered, textured, and uniquely styled outfits.",
-    price: 54.99,
+    price: 89.99,
     originalValue: 360,
     items: 5,
     images: [
@@ -144,7 +142,7 @@ export const clothingBoxes: ClothingBox[] = [
     description: "Less is more with quality essentials",
     longDescription:
       "A thoughtfully curated capsule collection. Neutral tones, clean lines, and versatile pieces that mix and match effortlessly for countless outfit combinations.",
-    price: 62.99,
+    price: 104.99,
     originalValue: 450,
     items: 6,
     images: [
@@ -168,7 +166,7 @@ export const clothingBoxes: ClothingBox[] = [
     description: "Performance meets sustainable fashion",
     longDescription:
       "Pre-loved activewear that performs. Quality leggings, breathable tops, and comfortable sneakers for workouts, yoga, or athleisure days.",
-    price: 39.99,
+    price: 84.99,
     originalValue: 250,
     items: 5,
     images: [
@@ -192,7 +190,7 @@ export const clothingBoxes: ClothingBox[] = [
     description: "Statement pieces for special moments",
     longDescription:
       "Occasion wear without the guilt. Stunning dresses, elegant accessories, and special pieces perfect for events, dates, and celebrations.",
-    price: 69.99,
+    price: 114.99,
     originalValue: 600,
     items: 3,
     images: [
